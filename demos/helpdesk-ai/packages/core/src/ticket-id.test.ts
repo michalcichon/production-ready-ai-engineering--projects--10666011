@@ -8,4 +8,8 @@ describe("formatTicketId", () => {
   it("returns a T-prefixed id", () => {
     expect(formatTicketId("1004")).toBe("T-1004");
   });
+
+  it("leaves an already-prefixed id unchanged", () => {
+    expect(formatTicketId("T-1004")).toBe("T-1004");
+  });
 });
