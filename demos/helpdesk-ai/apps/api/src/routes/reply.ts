@@ -13,7 +13,7 @@ export async function replyRoutes(app: FastifyInstance) {
   app.post<{ Params: { id: string } }>("/api/tickets/:id/suggest", async (req, reply) => {
     const ticket = getTicket(req.params.id);
     if (!ticket) return reply.code(404).send({ error: "not_found" });
-    const suggestion = await suggestReply(ticket);
+    const suggestion = await suggestReply(ticket.messages);
     return { suggestion };
   });
 
